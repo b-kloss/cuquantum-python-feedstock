@@ -1,4 +1,4 @@
-{% set package="cuquantum-python" %}
+{% set package = "cuquantum-python" %}
 # Make sure the component versions are consistent with the SDK version!
 {% set sdk_version_string = "24.11.0.21" %}
 {% set sdk_version = sdk_version_string.split(".") %}
@@ -21,7 +21,7 @@ package:
 
 source:
   - url: {{ github }}  # [linux64 or aarch64]
-    sha256: 6e4a5ad168e8aaa422f338c2a273242d3c9aa22be081a4065f85d75b6eecda7a  # [linux64 or aarch64]
+    sha256: a4b0965e7193515930542cc558d922e24c1732d8240efde3e622e84d6c4416fe  # [linux64 or aarch64]
 
 build:
   number: {{ build_num }}
@@ -39,20 +39,20 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - python >=3.10                       # [build_platform != target_platform]
+    - python                              # [build_platform != target_platform]
     - cython <3                           # [build_platform != target_platform]
   host:
-    - python >=3.10
+    - python
     - pip
     - cython <3
     - custatevec  ={{ cusv_version }}
     - cutensornet ={{ cutn_version }}    
-    - cudensitymat ={{cudm_version}}
+    - cudensitymat ={{ cudm_version }}
     - packaging
     # setuptools requirement may be new
     - setuptools
   run:
-    - python >=3.10
+    - python
     - numpy  >=1.21
     - cupy   >=13.0
     - cuda-version >=11.0.*,<13.a0
